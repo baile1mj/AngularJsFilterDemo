@@ -1,0 +1,12 @@
+[
+  {
+    "outputFileName": "Scripts/filteringDemo.js",
+    "minify": {
+      "enabled": true
+    },
+    "inputFiles": [
+      "Scripts/app/app.config.js",
+      "Scripts/app/app.mainView.js"
+    ]
+  }
+]

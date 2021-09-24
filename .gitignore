@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Exclude TypeScript artifacts
+FilteringDemo/Scripts/app/*.js
+FilteringDemo/Scripts/app/*.js.map
+FilteringDemo/Scripts/*.js
