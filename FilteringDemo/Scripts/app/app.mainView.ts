@@ -27,6 +27,8 @@
             this.vm.sectionFilters = TestData.Generator.createSectionFilters();
 
             this.vm.courses.forEach((c: Course) => {
+                c.filterState.considerChildren(c.sections);
+
                 this.vm.courseFilters.forEach((f: Filter) => f.addRecord(c));
                 this.vm.sectionFilters.forEach((f: Filter) => f.addRecords(c.sections));
             });

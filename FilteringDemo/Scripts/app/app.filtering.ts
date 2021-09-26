@@ -5,6 +5,7 @@
 
     export class FilterState {
         private appliedFilters: Filter[] = [];
+        private childFilters: IFilterable[] = [];
 
         applyFilter(filter: Filter): void {
             this.appliedFilters.push(filter);
@@ -15,8 +16,21 @@
             this.appliedFilters.splice(index, 1);
         }
 
+        considerChildren(children: IFilterable[]): void {
+            this.childFilters = children;
+        }
+
         isFiltered(): boolean {
+            return this.isNotVisible() || this.noChildrenVisible();
+        }
+
+        private isNotVisible(): boolean {
+
             return this.appliedFilters.length > 0;
+        }
+
+        private noChildrenVisible(): boolean {
+            return this.childFilters.length > 0 && this.childFilters.every((c: IFilterable) => c.filterState.isFiltered());
         }
     }
 
