@@ -6,6 +6,9 @@
     },
     "inputFiles": [
       "Scripts/app/app.config.js",
+      "Scripts/app/app.filtering.js",
+      "Scripts/app/app.models.js",
+      "Scripts/app/app.testData.js",
       "Scripts/app/app.mainView.js"
     ]
   }

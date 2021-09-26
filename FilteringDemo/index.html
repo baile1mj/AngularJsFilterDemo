@@ -11,9 +11,51 @@
 <body data-ng-app="filteringDemo" data-ng-controller="mainController as ctrl">
     <h1>Filtering Demo</h1>
     <div>
-        <p>{{ctrl.vm.testMessage}}</p>
+        <h2>Available Courses</h2>
+        <div>
+            <h3>Filter Results</h3>
+            <div data-ng-repeat="courseFilter in ctrl.vm.courseFilters track by $index">
+                <h4>{{courseFilter.displayName}}</h4>
+                <ul>
+                    <li data-ng-repeat="option in courseFilter.options track by $index">
+                        <input type="checkbox" data-ng-checked="!option.isApplied()" data-ng-click="option.toggle()" />
+                        {{option.displayName}}
+                    </li>
+                </ul>
+            </div>
+            <div data-ng-repeat="sectionFilter in ctrl.vm.sectionFilters track by $index">
+                <h4>{{sectionFilter.displayName}}</h4>
+                <ul>
+                    <li data-ng-repeat="option in sectionFilter.options track by $index">
+                        <input type="checkbox" data-ng-checked="!option.isApplied()" data-ng-click="option.toggle()" />
+                        {{option.displayName}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div data-ng-repeat="course in ctrl.vm.filteredCourses() track by $index">
+            <h3>{{course.subject}} {{course.number}} - {{course.title}}</h3>
+            <table>
+                <tr>
+                    <th>Section</th>
+                    <th>Day(s)</th>
+                    <th>Location</th>
+                    <th>Delivery</th>
+                    <th>Seats</th>
+                </tr>
+                <tr data-ng-repeat="section in ctrl.vm.filteredSections(course.sections) track by $index">
+                    <td>{{section.number}}</td>
+                    <td>{{section.getDaysForDisplay()}}</td>
+                    <td>{{section.location}}</td>
+                    <td>{{section.delivery}}</td>
+                    <td>
+                        Total: {{section.capacity}}<br />
+                        Available: {{section.available}}
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    
-    <script src="Scripts/filteringDemo.min.js" type="text/javascript"></script>
+    <script src="Scripts/filteringDemo.js" type="text/javascript"></script>
 </body>
 </html>

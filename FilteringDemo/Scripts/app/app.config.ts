@@ -1,3 +1,3 @@
-﻿namespace Filtering {
+﻿namespace Demo {
     export let filteringDemo = angular.module('filteringDemo', []);
 }
